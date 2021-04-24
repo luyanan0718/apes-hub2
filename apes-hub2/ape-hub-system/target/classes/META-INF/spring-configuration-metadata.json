@@ -1,0 +1,11 @@
+{
+  "groups": [
+    {
+      "name": "system",
+      "type": "com.ape.hub.system.config.SystemProperties",
+      "sourceType": "com.ape.hub.system.config.SystemProperties"
+    }
+  ],
+  "properties": [],
+  "hints": []
+}
