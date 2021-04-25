@@ -1,9 +1,11 @@
 import request from '@/utils/request'
 
+let prefix = '/uaa/system/role'
+
 // 查询角色列表
 export function listRole(query) {
   return request({
-    url: '/uaa/system/role/list',
+    url: prefix+'/list',
     method: 'post',
     data: query
   })
@@ -12,7 +14,7 @@ export function listRole(query) {
 // 查询角色详细
 export function getRole(roleId) {
   return request({
-    url: '/uaa/system/role/' + roleId,
+    url: prefix+'/' + roleId,
     method: 'get'
   })
 }
@@ -20,7 +22,7 @@ export function getRole(roleId) {
 // 新增角色
 export function addRole(data) {
   return request({
-    url: '/uaa/system/role',
+    url: prefix+'',
     method: 'post',
     data: data
   })
@@ -29,7 +31,7 @@ export function addRole(data) {
 // 修改角色
 export function updateRole(data) {
   return request({
-    url: '/uaa/system/role',
+    url: prefix+'',
     method: 'put',
     data: data
   })
@@ -38,7 +40,7 @@ export function updateRole(data) {
 // 角色数据权限
 export function dataScope(data) {
   return request({
-    url: '/uaa/system/role/dataScope',
+    url: prefix+'/dataScope',
     method: 'put',
     data: data
   })
@@ -51,7 +53,7 @@ export function changeRoleStatus(roleId, status) {
     status
   }
   return request({
-    url: '/uaa/system/role/changeStatus',
+    url: prefix+'/changeStatus',
     method: 'put',
     data: data
   })
@@ -60,7 +62,7 @@ export function changeRoleStatus(roleId, status) {
 // 删除角色
 export function delRole(roleId) {
   return request({
-    url: '/uaa/system/role/' + roleId,
+    url: prefix+'/' + roleId,
     method: 'delete'
   })
 }
@@ -68,7 +70,7 @@ export function delRole(roleId) {
 // 导出角色
 export function exportRole(query) {
   return request({
-    url: '/uaa/system/role/export',
+    url: prefix+'/export',
     method: 'get',
     params: query
   })

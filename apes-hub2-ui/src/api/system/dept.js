@@ -1,9 +1,11 @@
 import request from '@/utils/request'
 
+let prefix = '/uaa/system/dept'
+
 // 查询部门列表
 export function listDept(query) {
   return request({
-    url: '/uaa/system/dept/list',
+    url: prefix + '/list',
     method: 'get',
     params: query
   })
@@ -12,7 +14,7 @@ export function listDept(query) {
 // 查询部门列表（排除节点）
 export function listDeptExcludeChild(deptId) {
   return request({
-    url: '/uaa/system/dept/list/exclude/' + deptId,
+    url: prefix + '/list/exclude/' + deptId,
     method: 'get'
   })
 }
@@ -20,7 +22,7 @@ export function listDeptExcludeChild(deptId) {
 // 查询部门详细
 export function getDept(deptId) {
   return request({
-    url: '/uaa/system/dept/' + deptId,
+    url: prefix + '/' + deptId,
     method: 'get'
   })
 }
@@ -28,7 +30,7 @@ export function getDept(deptId) {
 // 查询部门下拉树结构
 export function treeselect() {
   return request({
-    url: '/uaa/system/dept/treeselect',
+    url: prefix + '/treeselect',
     method: 'get'
   })
 }
@@ -36,7 +38,7 @@ export function treeselect() {
 // 根据角色ID查询部门树结构
 export function roleDeptTreeselect(roleId) {
   return request({
-    url: '/uaa/system/dept/roleDeptTreeselect/' + roleId,
+    url: prefix + '/roleDeptTreeselect/' + roleId,
     method: 'get'
   })
 }
@@ -44,7 +46,7 @@ export function roleDeptTreeselect(roleId) {
 // 新增部门
 export function addDept(data) {
   return request({
-    url: '/uaa/system/dept',
+    url: prefix + '',
     method: 'post',
     data: data
   })
@@ -53,7 +55,7 @@ export function addDept(data) {
 // 修改部门
 export function updateDept(data) {
   return request({
-    url: '/uaa/system/dept',
+    url: prefix + '',
     method: 'put',
     data: data
   })
@@ -62,7 +64,7 @@ export function updateDept(data) {
 // 删除部门
 export function delDept(deptId) {
   return request({
-    url: '/uaa/system/dept/' + deptId,
+    url: prefix + '/' + deptId,
     method: 'delete'
   })
 }

@@ -1,9 +1,11 @@
 import request from '@/utils/request'
 
+let prefix = '/uaa/system/menu'
+
 // 查询菜单列表
 export function listMenu(query) {
   return request({
-    url: '/uaa/system/menu/list',
+    url: prefix + '/list',
     method: 'get',
     params: query
   })
@@ -12,7 +14,7 @@ export function listMenu(query) {
 // 查询菜单详细
 export function getMenu(menuId) {
   return request({
-    url: '/uaa/system/menu/' + menuId,
+    url: prefix + '/' + menuId,
     method: 'get'
   })
 }
@@ -20,7 +22,7 @@ export function getMenu(menuId) {
 // 查询菜单下拉树结构
 export function treeselect() {
   return request({
-    url: '/uaa/system/menu/treeselect',
+    url: prefix + '/treeselect',
     method: 'get'
   })
 }
@@ -28,7 +30,7 @@ export function treeselect() {
 // 根据角色ID查询菜单下拉树结构
 export function roleMenuTreeselect(roleId) {
   return request({
-    url: '/uaa/system/menu/roleMenuTreeselect/' + roleId,
+    url: prefix + '/roleMenuTreeselect/' + roleId,
     method: 'get'
   })
 }
@@ -36,7 +38,7 @@ export function roleMenuTreeselect(roleId) {
 // 新增菜单
 export function addMenu(data) {
   return request({
-    url: '/uaa/system/menu',
+    url: prefix + '',
     method: 'post',
     data: data
   })
@@ -45,7 +47,7 @@ export function addMenu(data) {
 // 修改菜单
 export function updateMenu(data) {
   return request({
-    url: '/uaa/system/menu',
+    url: prefix + '',
     method: 'put',
     data: data
   })
@@ -54,7 +56,7 @@ export function updateMenu(data) {
 // 删除菜单
 export function delMenu(menuId) {
   return request({
-    url: '/uaa/system/menu/' + menuId,
+    url: prefix + '/' + menuId,
     method: 'delete'
   })
 }

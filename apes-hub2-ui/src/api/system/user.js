@@ -1,10 +1,12 @@
 import request from '@/utils/request'
-import { praseStrEmpty } from "@/utils/ruoyi";
+import { praseStrEmpty } from '@/utils/ruoyi'
+
+let prefix = '/uaa/system/user'
 
 // 查询用户列表
 export function listUser(query) {
   return request({
-    url: '/uaa/system/user/list',
+    url: prefix + '/list',
     method: 'post',
     data: query
   })
@@ -13,7 +15,7 @@ export function listUser(query) {
 // 查询用户详细
 export function getUser(userId) {
   return request({
-    url: '/uaa/system/user/' + praseStrEmpty(userId),
+    url: prefix + '/' + praseStrEmpty(userId),
     method: 'get'
   })
 }
@@ -21,7 +23,7 @@ export function getUser(userId) {
 // 新增用户
 export function addUser(data) {
   return request({
-    url: '/uaa/system/user',
+    url: prefix + '',
     method: 'post',
     data: data
   })
@@ -30,7 +32,7 @@ export function addUser(data) {
 // 修改用户
 export function updateUser(data) {
   return request({
-    url: '/uaa/system/user',
+    url: prefix + '',
     method: 'put',
     data: data
   })
@@ -39,7 +41,7 @@ export function updateUser(data) {
 // 删除用户
 export function delUser(userId) {
   return request({
-    url: '/uaa/system/user/' + userId,
+    url: prefix + '/' + userId,
     method: 'delete'
   })
 }
@@ -47,7 +49,7 @@ export function delUser(userId) {
 // 导出用户
 export function exportUser(query) {
   return request({
-    url: '/uaa/system/user/export',
+    url: prefix + '/export',
     method: 'get',
     params: query
   })
@@ -60,7 +62,7 @@ export function resetUserPwd(userId, password) {
     password
   }
   return request({
-    url: '/uaa/system/user/resetPwd',
+    url: prefix + '/resetPwd',
     method: 'put',
     data: data
   })
@@ -73,7 +75,7 @@ export function changeUserStatus(userId, status) {
     status
   }
   return request({
-    url: '/uaa/system/user/changeStatus',
+    url: prefix + '/changeStatus',
     method: 'put',
     data: data
   })
@@ -82,7 +84,7 @@ export function changeUserStatus(userId, status) {
 // 查询用户个人信息
 export function getUserProfile() {
   return request({
-    url: '/uaa/system/user/profile',
+    url: prefix + '/profile',
     method: 'get'
   })
 }
@@ -90,7 +92,7 @@ export function getUserProfile() {
 // 修改用户个人信息
 export function updateUserProfile(data) {
   return request({
-    url: '/uaa/system/user/profile',
+    url: prefix + '/profile',
     method: 'put',
     data: data
   })
@@ -103,7 +105,7 @@ export function updateUserPwd(oldPassword, newPassword) {
     newPassword
   }
   return request({
-    url: '/uaa/system/user/profile/updatePwd',
+    url: prefix + '/profile/updatePwd',
     method: 'put',
     params: data
   })
@@ -112,7 +114,7 @@ export function updateUserPwd(oldPassword, newPassword) {
 // 用户头像上传
 export function uploadAvatar(data) {
   return request({
-    url: '/uaa/system/user/profile/avatar',
+    url: prefix + '/profile/avatar',
     method: 'post',
     data: data
   })
@@ -121,7 +123,7 @@ export function uploadAvatar(data) {
 // 下载用户导入模板
 export function importTemplate() {
   return request({
-    url: '/uaa/system/user/importTemplate',
+    url: prefix + '/importTemplate',
     method: 'get'
   })
 }

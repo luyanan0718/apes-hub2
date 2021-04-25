@@ -1,5 +1,7 @@
 package com.ape.hub.web;
 
+import com.easy.archetype.security.oauth.client.annotation.EnableOauthClient;
+import com.easy.archetype.security.oauth.server.annotation.EnableOauthServer;
 import com.easy.archetype.security.security.annotation.EnableSecurity;
 import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
 import org.springframework.boot.SpringApplication;
@@ -15,13 +17,15 @@ import org.springframework.cache.annotation.EnableCaching;
  * @since 2021/1/18
  **/
 @EnableKnife4j
-@EnableSecurity
+@EnableOauthClient
+@EnableOauthServer
+//@EnableSecurity
 @EnableCaching
 @SpringBootApplication
 public class ApeHubWenApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ApeHubWenApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ApeHubWenApplication.class, args);
+    }
 
 }

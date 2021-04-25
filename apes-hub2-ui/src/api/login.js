@@ -18,7 +18,7 @@ export function login(username, password, code, uuid) {
 export function refreshToken(refresh_token) {
   const grant_type = 'refresh_token'
   return request({
-    url: '/uaa//oauth/token',
+    url: '/uaa/oauth/token',
     method: 'post',
     params: { client_id, client_secret, grant_type, scope, refresh_token }
   })
@@ -35,7 +35,7 @@ export function getInfo() {
 // 退出方法
 export function logout() {
   return request({
-    url: '/uaa//token/logout',
+    url: '/uaa/token/logout',
     method: 'delete'
   })
 }
@@ -43,7 +43,7 @@ export function logout() {
 // 获取验证码
 export function getCodeImg() {
   return request({
-    url: '/uaa//captchaImage',
+    url: '/uaa/captchaImage',
     method: 'get'
   })
 }
