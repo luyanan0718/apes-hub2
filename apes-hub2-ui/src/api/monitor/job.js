@@ -6,8 +6,8 @@ let prefix = '/uaa/job'
 export function listJob(query) {
   return request({
     url: prefix + '/list',
-    method: 'get',
-    params: query
+    method: 'post',
+    data: query
   })
 }
 
