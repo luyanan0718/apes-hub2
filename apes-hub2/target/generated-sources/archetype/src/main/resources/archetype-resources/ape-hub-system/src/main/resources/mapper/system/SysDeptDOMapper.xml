@@ -1,0 +1,56 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="${package}.system.mapper.SysDeptMapper">
+	<update id="updateDeptChildren" parameterType="java.util.List">
+
+		update sys_dept set ancestors =
+		<foreach collection="depts" item="item" index="index"
+				 separator=" " open="case dept_id" close="end">
+			when ${symbol_pound}{item.deptId} then ${symbol_pound}{item.ancestors}
+		</foreach>
+		where dept_id in
+		<foreach collection="depts" item="item" index="index"
+				 separator="," open="(" close=")">
+			${symbol_pound}{item.deptId}
+		</foreach>
+	</update>
+	<update id="updateDeptStatus">
+		update sys_dept
+		<set>
+			<if test="status != null and status != ''">status = ${symbol_pound}{status},</if>
+			<if test="updateBy != null and updateBy != ''">update_by = ${symbol_pound}{updateBy},</if>
+			update_time = sysdate()
+		</set>
+		where dept_id in (${symbol_dollar}{ancestors})
+	</update>
+
+	<select id="listByRoleId" resultType="java.lang.Long">
+
+		select d.dept_id
+		from sys_dept d
+		left join sys_role_dept rd on d.dept_id = rd.dept_id
+		where rd.role_id = ${symbol_pound}{roleId}
+		<if test="deptCheckStrictly">
+			and d.dept_id not in (select d.parent_id from sys_dept d inner join sys_role_dept rd on d.dept_id =
+			rd.dept_id and rd.role_id = ${symbol_pound}{roleId})
+		</if>
+		order by d.parent_id, d.order_num
+	</select>
+	<select id="selectNormalChildrenDeptById" resultType="java.lang.Integer">
+
+		select count(*)
+		from sys_dept
+		where status = 0
+		  and del_flag = '0'
+		  and find_in_set(${symbol_pound}{deptId}, ancestors)
+	</select>
+	<select id="selectChildrenDeptById" resultType="${package}.system.entity.SysDeptDo">
+		select *
+		from sys_dept
+		where find_in_set(${symbol_pound}{deptId}, ancestors)
+
+	</select>
+</mapper>
